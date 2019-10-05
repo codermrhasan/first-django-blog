@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head_title %}Log Out{% endblock %}
+{% block content %}
+
+<div class="text-center form-signin" style="margin-bottom: 20em;">
+  <div class="alert alert-warning" role="alert">
+    Warning! You are not logged in Now!
+  </div>
+
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      <a href="{% url 'login' %}">Log In Instead</a>
+    </small>
+  </div>
+</div>
+
+{% endblock %}

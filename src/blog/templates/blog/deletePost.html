@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block head_title %} {{ author.username }}'s Blog {% endblock %}
+{% block content %}
+<div class="formwrapper">
+    <div class="alert alert-danger">
+        Are you sure to delete this post?
+    </div>
+    <p class="h1 font-italic text-warning" >"{{ post_title }}"</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-outline-warning" type="submit">Yes, Delete</button>
+    </form>
+</div>
+{% endblock %}

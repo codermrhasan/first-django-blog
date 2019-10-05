@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block head_title %}
+{{ username }}'s Blog
+{% endblock %}
+{% block content %}
+{% include 'blog/blogBanner.html' %}
+{% include 'blog/postList.html' %}
+{% endblock %}
