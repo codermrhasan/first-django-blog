@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<style>
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+</style>
+{% block head_title %}
+Authors List
+{% endblock %}
+{% block content %}
+
+<div class="content d-flex flex-wrap justify-content-around">
+{% for author in authors %}
+<div class="p-2">
+    
+        <div class="card mb-3 center" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4 text-center">
+                    <img src="{{ author.profile.profile_picture.url }}" class="card-img"
+                        alt="{{ author.first_name }} {{ author.last_name }}" style="width: 10em; height: 10em;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ author.first_name }} {{ author.last_name }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ author.email }}</small></p>
+                        <p class="card-text">
+                        {% if author.profile.blog_description %}
+                        {{ author.profile.blog_description }}
+                        {% else %} This blogger dosen't set any blog description.
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'published_post' author.username %}" class="stretched-link"></a>
+
+        </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

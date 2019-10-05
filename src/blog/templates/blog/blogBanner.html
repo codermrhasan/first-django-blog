@@ -1,0 +1,18 @@
+<section class="jumbotron text-center" style="
+background-image: url({{ banner.url }}); 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;">
+    <div class="overlay"></div>
+    <div class="container">
+        <h1 class="jumbotron-heading" >{{ author.username }}'s Blog</h1>
+        <p class="lead text-muted">
+            {% if author.profile.blog_description %}
+            {{ author.profile.blog_description }}
+            {% else %}
+            This blogger dosen't set any blog description.
+            {% endif %}
+        </p>
+    </div>
+</section>

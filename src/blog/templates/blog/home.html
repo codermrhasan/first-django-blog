@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block head_title %}
+Home
+{% endblock %}
+{% block content %}
+<section class="jumbotron text-center" style="
+background-image: url('/media/home_page_pics/blog_home5.jpeg'); 
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;">
+    <div class="overlay"></div>
+    <div class="container">
+        <h1 class="jumbotron-heading" >Django Blog</h1>
+        <p class="lead text-muted">“Start writing, no matter what. The water does not flow until the faucet is turned on.”
+                — Louis L’Amour</p>
+    </div>
+</section>
+{% include 'blog/postList.html' %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load timediffer %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ post.post_title }}{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+
+      <!-- Title -->
+      <h1 class="mt-4">{{ post.post_title }}</h1>
+
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="{% url 'published_post' username=post.user.username %}">{{ post.user.username }}</a>
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <div class="d-flex justify-content-between align-items-center">
+        <p>Updated {{ now|timediffer:post.updated }}</p>
+        <div class="btn-group">
+          {% if user.username == post.user.username %}
+          <a href="{% url 'edit_post' username=user.username slug=post.slug %}"
+            class="btn btn-sm btn-outline-info">Edit</a>
+          <a href="{% url 'delete_post' username=user.username slug=post.slug %}"
+            class="btn btn-sm btn-outline-warning">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="{{ post.post_image.url }}" alt="">
+
+      <hr>
+
+      <!-- Post Content -->
+      <p>{{ post.post_description|linebreaks }}</p>
+
+      <div class="d-flex justify-content-between align-items-center">
+        {% if user.is_authenticated %}
+        <form method="POST"> {% csrf_token %}
+        <div class="">
+          {{ r_form|crispy }}
+          <button type="submit" class="btn btn-sm btn-secondary">react</button>
+        </div>
+      </form>
+      {% endif %}
+        <div>
+          <small class="text-muted">{{ likes }} Likes</small>
+          <small class="text-muted">{{ dislikes }} Dislikes</small>
+          <small class="text-muted">{{ noreacts }} No Reacts</small>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Comments Form -->
+      <div class="card my-4">
+        {% if user.is_authenticated %}
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <form method="POST"> {% csrf_token %}
+            <div class="form-group">
+                {{ c_form|crispy }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        {% else %}
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+            <div class="form-group">
+          <textarea class="form-control"placeholder="Login to comment here"></textarea>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+
+      <!-- Single Comment -->
+      {% for comment in comments %}
+      <div class="media mb-4">
+        <img style="width: 50px; height:50px;" class="d-flex mr-3 rounded-circle" src="{{ comment.user.profile.profile_picture.url }}" alt="">
+        <div class="media-body">
+          <h5 class="mt-0">{{ comment }}</h5>
+          {{ comment.comment_text|linebreaks }}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

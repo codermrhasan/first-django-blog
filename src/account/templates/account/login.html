@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Log In{% endblock %}
+{% block content %}
+
+<div class="form-signin">
+  {% if not user.is_authenticated %}
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Log In</legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">LOG IN</button>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Need an account? <a href="{% url 'signup' %}">Sign Up</a>
+    </small>
+  </div>
+{% else %}
+ <div class="alert alert-warning" role="alert">
+      Warning! You've already logged in!
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+          <a href="{% url 'logout' %}">Log Out Instead</a>
+        </small>
+      </div>
+{% endif %}
+</div>
+
+{% endblock %}
+
+
