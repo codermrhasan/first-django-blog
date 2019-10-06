@@ -41,12 +41,12 @@ REACT_CHOICES = (
 
 
 class Reaction(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     react = models.CharField('',max_length=10,choices=REACT_CHOICES)
 
     class META:
-        unique_together = ('react', 'user',)
+        unique_together = ('post', 'user',)
 
     def __str__(self):
         return self.post.post_title

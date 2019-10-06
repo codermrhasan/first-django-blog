@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block head_title %}
-{{ username }}'s Blog
+{{ username }}'s Saved Posts
 {% endblock %}
 {% block content %}
 {% include 'blog/blogBanner.html' %}
+<h3 style="text-align: center;">Saved Posts</h3>
 {% include 'blog/postList.html' %}
 {% endblock %}

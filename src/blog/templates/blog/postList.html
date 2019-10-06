@@ -8,6 +8,7 @@
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">{{ post.post_title }}</h5>
+                        <small class="text-muted">Author: {{ post.user }}</small><br>
                         <small class="text-muted">Updated {{ now|timediffer:post.updated }}</small>                            
                         <p class="card-text">{{ post.post_description|truncatewords:5 }}</p>
                     </div>
