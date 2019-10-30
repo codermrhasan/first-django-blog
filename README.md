@@ -91,7 +91,7 @@ You are always welcome to contribute it. You may add tests, separate frontend, f
 
 ## Authors
 
-* **Rakib Hasan** - *Initial work* - [codewithrakib](https://github.com/codewithrakib)
+* **Rakib Hasan** - *Initial work* - [rahacode](https://github.com/rahacode)
 
 ## License
 
