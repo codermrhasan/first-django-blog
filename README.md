@@ -91,7 +91,7 @@ You are always welcome to contribute it. You may add tests, separate frontend, f
 
 ## Authors
 
-* **Md Rakibul Hasan** - *Initial work* - [rhasancodes](https://github.com/rhasancodes)
+* **Md Rakibul Hasan** - *Initial work* - [codermrhasan](https://github.com/codermrhasan)
 
 ## License
 
