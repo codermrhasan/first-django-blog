@@ -1,6 +1,9 @@
 # First Django Blog
 This is a simple Django blog
 
+## Frontend UI
+[How this web UI looks?](ui/django_blog_views1.pdf)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
